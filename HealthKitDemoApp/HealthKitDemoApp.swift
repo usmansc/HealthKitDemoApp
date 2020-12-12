@@ -1,5 +1,5 @@
 //
-//  HealthKitDemoAppApp.swift
+//  HealthKitDemoApp.swift
 //  HealthKitDemoApp
 //
 //  Created by Lukas Schmelcer on 12/12/2020.
@@ -11,7 +11,7 @@ import SwiftUI
 struct HealthKitDemoAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
