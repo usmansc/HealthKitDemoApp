@@ -14,10 +14,10 @@ extension Image{
             if let image = UIImage(data: data){
                 return Image(uiImage: image)
             }else{
-                return Image(systemName: "info.circle")
+                return Image(systemName: "")
             }
         }else{
-            return Image(systemName: "info.circle")
+            return Image(systemName: "")
         }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State var isPresented = false
+    @State var chosenWorkout: Workout?
     @ObservedObject var viewModel: MainViewModel
     var body: some View {
         NavigationView{
@@ -38,68 +39,41 @@ struct MainView: View {
                     }
                 }.padding()
                 
-                VStack{
-                    Text("Hello")
-                        if !self.viewModel.workouts.isEmpty{
-                            ForEach(self.viewModel.workouts){workout in
-                                Text("\(workout.distance ?? 0.0)")
-                            }
-                        }
-                }.onAppear{
-                   
-                    self.viewModel.getWorkouts()
-                }
                 ScrollView(.horizontal) {
-                    HStack{
-                        Button(action:{
-                            isPresented.toggle()
-                        }){
-                            ZStack{
-                                VStack{
-                                    Image(systemName: "").presentImage(fromUrl: URL(string: "https://vietnaminsider.vn/wp-content/uploads/2019/01/runnings.jpg")!)
-                                        .resizable()
-                                        .scaledToFill()
-                                       
+                    if !self.viewModel.workouts.isEmpty{
+                        HStack{
+                            ForEach(self.viewModel.workouts){workout in
+                                Button(action:{
+                                    chosenWorkout = workout
+                                    isPresented.toggle()
+                                }){
+                                    ZStack{
+                                        VStack{
+                                            Image(systemName: "").presentImage(fromUrl: URL(string: "https://vietnaminsider.vn/wp-content/uploads/2019/01/runnings.jpg")!)
+                                                .resizable()
+                                                .scaledToFill()
+                                               
+                                        }
+                                        .shadow(color: .black, radius: 5, x: 1, y: 0)
+                                        .frame(width:275, height: 175)
+                                        
+                                        .cornerRadius(40) // Workout 2
+                                        VStack{
+                                            Text(formatDate(workout.stratDateTime)).foregroundColor(.white)
+                                        }
+                                        
+                                        .frame(width:275, height: 175)
+                                        .background(Color.black.opacity(0.5))
+                                        .cornerRadius(40) // Workout 2
+                                    }
                                 }
-                                .shadow(color: .black, radius: 5, x: 1, y: 0)
-                                .frame(width:275, height: 175)
-                                
-                                .cornerRadius(40) // Workout 2
-                                VStack{
-                                    Text("Workout 1").foregroundColor(.white)
-                                }
-                                
-                                .frame(width:275, height: 175)
-                                .background(Color.black.opacity(0.5))
-                                .cornerRadius(40) // Workout 2
+                               
                             }
                         }
-                        
-                        Button(action:{
-                            isPresented.toggle()
-                        }){
-                            ZStack{
-                                VStack{
-                                    Image(systemName: "").presentImage(fromUrl: URL(string: "https://vietnaminsider.vn/wp-content/uploads/2019/01/runnings.jpg")!)
-                                        .resizable()
-                                        .scaledToFill()
-                                       
-                                }
-                                .shadow(color: .black, radius: 5, x: 1, y: 0)
-                                .frame(width:275, height: 175)
-                                
-                                .cornerRadius(40) // Workout 2
-                                VStack{
-                                    Text("Workout 2").foregroundColor(.white)
-                                }
-                                
-                                .frame(width:275, height: 175)
-                                .background(Color.black.opacity(0.5))
-                                .cornerRadius(40) // Workout 2
-                            }
-                        }
-
                     }
+                }.onAppear{
+                    
+                    self.viewModel.getWorkouts()
                 }
                 Spacer()
                 NavigationLink(destination: WorkoutView()){
@@ -120,6 +94,15 @@ struct MainView: View {
                 Text("Hello")
             }
         }
+    }
+    private func formatDate(_ date: Date?) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        if let date = date{
+            return formatter.string(from: date)
+        }
+        return "Unknown"
+        
     }
 }
 

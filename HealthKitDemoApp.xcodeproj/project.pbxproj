@@ -17,6 +17,7 @@
 		808ACBA625862AB7008F2B13 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBA525862AB7008F2B13 /* MainViewModel.swift */; };
 		808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBAA25862B6A008F2B13 /* Workout.swift */; };
 		808ACBB025862DB1008F2B13 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808ACBAF25862DB1008F2B13 /* HealthKit.framework */; };
+		808ACBD2258644C9008F2B13 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD1258644C9008F2B13 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +32,9 @@
 		808ACBA025861D42008F2B13 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		808ACBA525862AB7008F2B13 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		808ACBAA25862B6A008F2B13 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
-		808ACBAD25862DB1008F2B13 /* HealthKitDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthKitDemoApp.entitlements; sourceTree = "<group>"; };
 		808ACBAF25862DB1008F2B13 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		808ACBCC258643EB008F2B13 /* HealthKitDemoApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HealthKitDemoApp.entitlements; sourceTree = "<group>"; };
+		808ACBD1258644C9008F2B13 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 		808ACB7A25853F6C008F2B13 /* HealthKitDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				808ACBAD25862DB1008F2B13 /* HealthKitDemoApp.entitlements */,
+				808ACBCC258643EB008F2B13 /* HealthKitDemoApp.entitlements */,
 				808ACBA925862B5D008F2B13 /* Model */,
 				808ACBA425862A96008F2B13 /* ViewModel */,
 				808ACB9F25861D2C008F2B13 /* Manager */,
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				808ACBA025861D42008F2B13 /* HealthManager.swift */,
+				808ACBD1258644C9008F2B13 /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				TargetAttributes = {
 					808ACB7725853F6C008F2B13 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -211,6 +215,7 @@
 				808ACB9C25854A41008F2B13 /* Image.swift in Sources */,
 				808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */,
 				808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */,
+				808ACBD2258644C9008F2B13 /* LocationManager.swift in Sources */,
 				808ACB93258542B5008F2B13 /* HealthKitDemoApp.swift in Sources */,
 				808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */,
 				808ACBA625862AB7008F2B13 /* MainViewModel.swift in Sources */,
@@ -341,6 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HealthKitDemoApp/HealthKitDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HealthKitDemoApp/Preview Content\"";
@@ -354,6 +360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lukasschmelcer.HealthKitDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -364,6 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HealthKitDemoApp/HealthKitDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HealthKitDemoApp/Preview Content\"";
