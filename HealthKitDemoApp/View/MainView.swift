@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State var isPresented = false
+    @ObservedObject var viewModel: MainViewModel
     var body: some View {
         NavigationView{
             VStack{
@@ -36,6 +37,18 @@ struct MainView: View {
                         }
                     }
                 }.padding()
+                
+                VStack{
+                    Text("Hello")
+                        if !self.viewModel.workouts.isEmpty{
+                            ForEach(self.viewModel.workouts){workout in
+                                Text("\(workout.distance ?? 0.0)")
+                            }
+                        }
+                }.onAppear{
+                   
+                    self.viewModel.getWorkouts()
+                }
                 ScrollView(.horizontal) {
                     HStack{
                         Button(action:{
@@ -112,6 +125,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(viewModel: MainViewModel.init())
     }
 }

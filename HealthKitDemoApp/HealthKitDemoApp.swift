@@ -11,7 +11,7 @@ import SwiftUI
 struct HealthKitDemoAppApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: MainViewModel.init())
         }
     }
 }
