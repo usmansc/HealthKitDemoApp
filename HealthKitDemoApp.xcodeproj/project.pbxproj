@@ -19,6 +19,8 @@
 		808ACBB025862DB1008F2B13 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808ACBAF25862DB1008F2B13 /* HealthKit.framework */; };
 		808ACBD2258644C9008F2B13 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD1258644C9008F2B13 /* LocationManager.swift */; };
 		808ACBD6258650E6008F2B13 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD5258650E6008F2B13 /* WorkoutViewModel.swift */; };
+		808ACBD925865222008F2B13 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD825865222008F2B13 /* TimerManager.swift */; };
+		808ACBDD25865277008F2B13 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBDC25865277008F2B13 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		808ACBCC258643EB008F2B13 /* HealthKitDemoApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HealthKitDemoApp.entitlements; sourceTree = "<group>"; };
 		808ACBD1258644C9008F2B13 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		808ACBD5258650E6008F2B13 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
+		808ACBD825865222008F2B13 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		808ACBDC25865277008F2B13 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		808ACB7A25853F6C008F2B13 /* HealthKitDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				808ACBDB2586526C008F2B13 /* Other */,
 				808ACBCC258643EB008F2B13 /* HealthKitDemoApp.entitlements */,
 				808ACBA925862B5D008F2B13 /* Model */,
 				808ACBA425862A96008F2B13 /* ViewModel */,
@@ -115,6 +120,7 @@
 			children = (
 				808ACBA025861D42008F2B13 /* HealthManager.swift */,
 				808ACBD1258644C9008F2B13 /* LocationManager.swift */,
+				808ACBD825865222008F2B13 /* TimerManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -142,6 +148,14 @@
 				808ACBAF25862DB1008F2B13 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		808ACBDB2586526C008F2B13 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				808ACBDC25865277008F2B13 /* Enums.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808ACB8D25854230008F2B13 /* MainView.swift in Sources */,
+				808ACBD925865222008F2B13 /* TimerManager.swift in Sources */,
 				808ACBD6258650E6008F2B13 /* WorkoutViewModel.swift in Sources */,
 				808ACB9C25854A41008F2B13 /* Image.swift in Sources */,
 				808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */,
@@ -223,6 +238,7 @@
 				808ACB93258542B5008F2B13 /* HealthKitDemoApp.swift in Sources */,
 				808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */,
 				808ACBA625862AB7008F2B13 /* MainViewModel.swift in Sources */,
+				808ACBDD25865277008F2B13 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

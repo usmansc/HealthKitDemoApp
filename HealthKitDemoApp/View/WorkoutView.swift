@@ -12,6 +12,8 @@ struct WorkoutView: View {
     @State var distance: Double = 0.0
     @State var activeTime: Double = 0.0
     @ObservedObject var source = WorkoutViewModel.init()
+    var timer = TimerManager()
+    var manager = LocationManager()
     var body: some View {
         VStack{
             ScrollView{
@@ -44,6 +46,17 @@ struct WorkoutView: View {
             }
         }.navigationBarItems(trailing: Button(action:{
             activityIsRunning.toggle()
+            if activityIsRunning{
+                self.source.startCapturing()
+                self.timer.runTimer(every: 1, unit: .second, handler:{
+                    self.source.actualizeLocation()
+                    self.activeTime += 1
+                })
+            }else{
+                self.timer.endTimer()
+                self.source.stopCapturing()
+                // Save data to healthkit here
+            }
             print("Started new activity")
         }){
             activityIsRunning ? Text("Zastaviť aktivitu") : Text("Spustit aktivitu")
