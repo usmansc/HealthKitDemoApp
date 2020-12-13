@@ -9,6 +9,9 @@ import SwiftUI
 
 struct WorkoutView: View {
     @State var activityIsRunning = false
+    @State var distance: Double = 0.0
+    @State var activeTime: Double = 0.0
+    @ObservedObject var source = WorkoutViewModel.init()
     var body: some View {
         VStack{
             ScrollView{

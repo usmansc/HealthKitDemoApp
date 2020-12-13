@@ -18,6 +18,7 @@
 		808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBAA25862B6A008F2B13 /* Workout.swift */; };
 		808ACBB025862DB1008F2B13 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808ACBAF25862DB1008F2B13 /* HealthKit.framework */; };
 		808ACBD2258644C9008F2B13 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD1258644C9008F2B13 /* LocationManager.swift */; };
+		808ACBD6258650E6008F2B13 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBD5258650E6008F2B13 /* WorkoutViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		808ACBAF25862DB1008F2B13 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		808ACBCC258643EB008F2B13 /* HealthKitDemoApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = HealthKitDemoApp.entitlements; sourceTree = "<group>"; };
 		808ACBD1258644C9008F2B13 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		808ACBD5258650E6008F2B13 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				808ACBA525862AB7008F2B13 /* MainViewModel.swift */,
+				808ACBD5258650E6008F2B13 /* WorkoutViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808ACB8D25854230008F2B13 /* MainView.swift in Sources */,
+				808ACBD6258650E6008F2B13 /* WorkoutViewModel.swift in Sources */,
 				808ACB9C25854A41008F2B13 /* Image.swift in Sources */,
 				808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */,
 				808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */,
