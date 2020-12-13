@@ -13,6 +13,7 @@
 		808ACB93258542B5008F2B13 /* HealthKitDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACB92258542B5008F2B13 /* HealthKitDemoApp.swift */; };
 		808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACB9725854980008F2B13 /* WorkoutView.swift */; };
 		808ACB9C25854A41008F2B13 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACB9B25854A41008F2B13 /* Image.swift */; };
+		808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBA025861D42008F2B13 /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		808ACB92258542B5008F2B13 /* HealthKitDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitDemoApp.swift; sourceTree = "<group>"; };
 		808ACB9725854980008F2B13 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		808ACB9B25854A41008F2B13 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		808ACBA025861D42008F2B13 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		808ACB7A25853F6C008F2B13 /* HealthKitDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				808ACB9F25861D2C008F2B13 /* Manager */,
 				808ACB9A25854A2C008F2B13 /* Extension */,
 				808ACB8B25854217008F2B13 /* View */,
 				808ACB7F25853F6F008F2B13 /* Assets.xcassets */,
@@ -89,6 +92,14 @@
 				808ACB9B25854A41008F2B13 /* Image.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		808ACB9F25861D2C008F2B13 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				808ACBA025861D42008F2B13 /* HealthManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 				808ACB9C25854A41008F2B13 /* Image.swift in Sources */,
 				808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */,
 				808ACB93258542B5008F2B13 /* HealthKitDemoApp.swift in Sources */,
+				808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
