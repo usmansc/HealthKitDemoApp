@@ -14,6 +14,8 @@
 		808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACB9725854980008F2B13 /* WorkoutView.swift */; };
 		808ACB9C25854A41008F2B13 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACB9B25854A41008F2B13 /* Image.swift */; };
 		808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBA025861D42008F2B13 /* HealthManager.swift */; };
+		808ACBA625862AB7008F2B13 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBA525862AB7008F2B13 /* MainViewModel.swift */; };
+		808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808ACBAA25862B6A008F2B13 /* Workout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		808ACB9725854980008F2B13 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		808ACB9B25854A41008F2B13 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		808ACBA025861D42008F2B13 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		808ACBA525862AB7008F2B13 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		808ACBAA25862B6A008F2B13 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 		808ACB7A25853F6C008F2B13 /* HealthKitDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				808ACBA925862B5D008F2B13 /* Model */,
+				808ACBA425862A96008F2B13 /* ViewModel */,
 				808ACB9F25861D2C008F2B13 /* Manager */,
 				808ACB9A25854A2C008F2B13 /* Extension */,
 				808ACB8B25854217008F2B13 /* View */,
@@ -100,6 +106,22 @@
 				808ACBA025861D42008F2B13 /* HealthManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		808ACBA425862A96008F2B13 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				808ACBA525862AB7008F2B13 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		808ACBA925862B5D008F2B13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				808ACBAA25862B6A008F2B13 /* Workout.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +195,11 @@
 			files = (
 				808ACB8D25854230008F2B13 /* MainView.swift in Sources */,
 				808ACB9C25854A41008F2B13 /* Image.swift in Sources */,
+				808ACBAB25862B6A008F2B13 /* Workout.swift in Sources */,
 				808ACB9825854980008F2B13 /* WorkoutView.swift in Sources */,
 				808ACB93258542B5008F2B13 /* HealthKitDemoApp.swift in Sources */,
 				808ACBA125861D42008F2B13 /* HealthManager.swift in Sources */,
+				808ACBA625862AB7008F2B13 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
