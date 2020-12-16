@@ -48,7 +48,6 @@ final class WorkoutViewModel: ObservableObject{
         
         if let currentCoordinates = self.currentCoordinates, let startCoordinates = startCoordinates{
             self.distanceFromStart = currentCoordinates.distance(from: startCoordinates)
-            print(distanceFromStart)
         }
         
     }

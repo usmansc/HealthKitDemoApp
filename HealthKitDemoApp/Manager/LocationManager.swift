@@ -24,8 +24,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             LocationManager.shared.requestWhenInUseAuthorization()
             LocationManager.shared.allowsBackgroundLocationUpdates = true
             LocationManager.shared.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        }else{
-            print("Todo handle error" )
         }
         
     }
