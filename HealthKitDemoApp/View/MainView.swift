@@ -37,7 +37,7 @@ struct MainView: View {
                                     Text(formatDate(workout.stratDateTime))
                                 })
                         }
-                }.onAppear(perform: {
+                }.onAppear(perform: { // Pri zobrazeni je nutne hodnoty nacitat cez VM
                     self.viewModel.getWorkouts()
                     self.viewModel.getUserInfo()
                 })
@@ -60,6 +60,9 @@ struct MainView: View {
         }
     }
     
+    
+    
+    // Funkcia na prevedenie HKBiologicalSex na textovú reprezentaciu
     private func getSex(_ sex: HKBiologicalSex?) -> String{
         if let sex = sex{
             switch sex {
@@ -76,7 +79,7 @@ struct MainView: View {
         return "Not set"
 
     }
-    
+    // Funkcia na formatovanie casu
     private func formatDate(_ date: Date?) -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm E, d MMM y"
@@ -88,6 +91,7 @@ struct MainView: View {
     }
 }
 
+// Detailny view treningu
 struct WorkoutDetailworkout: View {
     @State var workout: Workout?
     

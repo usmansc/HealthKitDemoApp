@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Workout: Identifiable,Hashable {
     let id: UUID = UUID()
     var distance: Double?

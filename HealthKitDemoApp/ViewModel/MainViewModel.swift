@@ -21,7 +21,7 @@ final class MainViewModel: ObservableObject{
 }
 
 extension MainViewModel{
-    
+    // Uloženie tréningu do HK
     func saveWorkout(of type: HKWorkoutActivityType,from workout: Workout, handler: @escaping (Bool) -> Void){
         self.dataManager.saveWorout(of: type, from: workout) { (succ, err) in
             if succ{
@@ -32,6 +32,7 @@ extension MainViewModel{
         }
     }
     
+    // Získanie informácie o veku a pohlaví
     func getUserInfo(){
         self.dataManager.authorize { (succ) in
             if succ{
@@ -47,11 +48,11 @@ extension MainViewModel{
             }
         }
     }
-    
+    // Získanie tréninogv z HK
     func getWorkouts(){
-        self.dataManager.authorize { (succ) in
+        self.dataManager.authorize { (succ) in // Ak mame povolenie na citanie
             if succ {
-                self.dataManager.queryWokouts(of: .running, from: 7) { (workouts) in
+                self.dataManager.queryWokouts(of: .running, from: 7) { (workouts) in // Ziskame bezecke treningy z poslednych 7 dni
                     DispatchQueue.main.async {
                         self.workouts.removeAll()
                         for workout in workouts{
@@ -59,14 +60,14 @@ extension MainViewModel{
                             if let distance = workout.totalDistance?.doubleValue(for: .meter()) {
                                 let startDate = workout.startDate
                                 let endDate = workout.endDate
-                                self.dataManager.queryHeartRateForWorkout(from: startDate, to: endDate,handler: { samples in
+                                self.dataManager.queryHeartRateForWorkout(from: startDate, to: endDate,handler: { samples in // Ziskame zaznamy o srdcovom rytme k danemu treningu
                                     var heartRate: [Double] = []
                                     for sample in samples{
                                         heartRate.append(sample.quantity.doubleValue(for: HKUnit.init(from: "count/min")))
                                     }
                                     DispatchQueue.main.async {
                                         
-                                        self.workouts.append(Workout(distance: distance, stratDateTime: startDate, endDateTime: endDate, duration: duration, heartRate: heartRate))
+                                        self.workouts.append(Workout(distance: distance, stratDateTime: startDate, endDateTime: endDate, duration: duration, heartRate: heartRate)) // Vytvorime trening a aktualizujeme
                                     }
                                     
                                     

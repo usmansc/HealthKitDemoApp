@@ -8,9 +8,12 @@
 import Foundation
 import CoreLocation
 
+// Stara sa o spracovanie zmien lokacie
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared: CLLocationManager = CLLocationManager()
     private var location: CLLocationCoordinate2D?
+    // Hodnoty pre doladenie filtracie, pre demo odstranene
     var resetKalmanFilter: Bool = false
     var useKalmanFilter: Bool = false
     var useLocationFilter: Bool = true

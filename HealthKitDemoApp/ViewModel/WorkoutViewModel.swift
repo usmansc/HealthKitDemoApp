@@ -23,17 +23,18 @@ final class WorkoutViewModel: ObservableObject{
         self.dataManager = dataManager
         
     }
-    
+    // Zacneme zachytavat zmeny lokacie
     func startCapturing(){
         self.dataManager.startUpdatingLocation()
         self.route = []
         self.actualizeLocation()
     }
-    
+    // Prestaneme zachytavat zmeny lokacie
     func stopCapturing(){
         self.dataManager.stopUpdatingLocation()
     }
     
+    // Aktualizujeme lokaciu
     func actualizeLocation(){
         self.route.append(self.dataManager.location!)
         if startCoordinates == nil {
@@ -44,6 +45,7 @@ final class WorkoutViewModel: ObservableObject{
         calculateDistance()
     }
     
+    // Ziskame vzdialenost od pociatocneho bodu
     func calculateDistance(){
         
         if let currentCoordinates = self.currentCoordinates, let startCoordinates = startCoordinates{

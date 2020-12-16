@@ -22,6 +22,7 @@ class HealthManager{
 
 
 extension HealthManager{
+    // Funkcia na poziadanie povolenia o citanie a zapis jednotlivych zaznamov z HK
     func authorize(handler: @escaping (Bool) -> Void){
         if let healthStore = self.healthStore {
             healthStore.requestAuthorization(toShare: ([.workoutType(), HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!, HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!]), read: ([.workoutType(), HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!, HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!,HKObjectType.characteristicType(forIdentifier: .biologicalSex)!])) { (succ, err) in
@@ -30,25 +31,25 @@ extension HealthManager{
         }
     }
    
+    // Funkcia na uloženie tréningu
     func saveWorout(of type: HKWorkoutActivityType,from workout: Workout, handler: @escaping (Bool, Error?) -> Void){
-        let conf = HKWorkoutConfiguration()
+        let conf = HKWorkoutConfiguration() // Vytvorenie konfigurýcie
         conf.activityType = type
-        if let healthStore = self.healthStore{
-            let builder = HKWorkoutBuilder(healthStore: healthStore, configuration: conf, device: .local())
-            builder.beginCollection(withStart: workout.stratDateTime) { (succ, err) in
+        if let healthStore = self.healthStore{ // Ak je zariadenie pripravené na HK
+            let builder = HKWorkoutBuilder(healthStore: healthStore, configuration: conf, device: .local()) // Builder pre zostavenie treningu
+            builder.beginCollection(withStart: workout.stratDateTime) { (succ, err) in // Oznacime zaciatok treningu
                 if !succ {
                     handler(false,err)
                     return
                 }
             }
             
-            guard let quantityType = HKQuantityType.quantityType(
-                    forIdentifier: .activeEnergyBurned) else {
+            guard let quantityType = HKQuantityType.quantityType( forIdentifier: .activeEnergyBurned) else { // Vytvorime kvantitativne typy pre spalene kalorie
                 handler(false, nil)
                 return
             }
             
-            guard let distanceQuantityType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning) else {
+            guard let distanceQuantityType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning) else { // Vytvorime kvantitativny typ pre vzdialenost
                 handler(false,nil)
                 return
             }
@@ -59,19 +60,19 @@ extension HealthManager{
             let distanceSample = HKCumulativeQuantitySample(type: distanceQuantityType, quantity: distance, start: workout.stratDateTime, end: workout.endDateTime)
             
             
-            builder.add([sample, distanceSample]) { (succ, err) in
+            builder.add([sample, distanceSample]) { (succ, err) in // Nahrame dane hodnoty do treningu
                 if !succ {
                     handler(false,err)
                     return
                 }
                 
-                builder.endCollection(withEnd: workout.endDateTime) { (succ, err) in
+                builder.endCollection(withEnd: workout.endDateTime) { (succ, err) in // Ukoncime kolekciu sucastnym datumom
                     if !succ {
                         handler(false,err)
                         return
                     }
                     
-                    builder.finishWorkout { (_, err) in
+                    builder.finishWorkout { (_, err) in // Ukoncime trening
                         let succ = err == nil
                         handler(succ, err)
                     }
@@ -82,12 +83,14 @@ extension HealthManager{
         }
         
     }
+    // Funkcia na ziskanie informácií o veku a pohlaví
     func queryPersonalInfo(handler: @escaping (Int?, HKBiologicalSex?) -> Void){
         guard let healthStore = self.healthStore else {return}
         do{
             let birthdayComponents =  try healthStore.dateOfBirthComponents()
             let biologicalSex =       try healthStore.biologicalSex()
             
+            // Vypocet veku uzivatela
             let today = Date()
             let calendar = Calendar.current
             let todayDateComponents = calendar.dateComponents([.year],
@@ -99,10 +102,12 @@ extension HealthManager{
             handler(nil,nil)
         }
     }
+    
+    // Funkcia na citanie treningov
     func queryWokouts(of type: HKWorkoutActivityType, from last: Int, handler: @escaping ([HKWorkout]) -> Void){
         guard let healthStore = self.healthStore else {return}
         let activityType = HKQuery.predicateForWorkouts(with: type)
-        let timeFrame = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .day ,value: -last, to: Date()), end: Date(), options: [])
+        let timeFrame = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .day ,value: -last, to: Date()), end: Date(), options: []) // Urcujeme od kedy chceme dane treningy hladat
         let sortBy = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
         
         let combined = NSCompoundPredicate(andPredicateWithSubpredicates: [activityType,timeFrame])
@@ -117,6 +122,7 @@ extension HealthManager{
         healthStore.execute(query)
     }
     
+    // Funkcia na citanie zodpovedajucej srdcovej frekvencie danemu treningu
     func queryHeartRateForWorkout(from startDate: Date,to endDate: Date, handler: @escaping ([HKQuantitySample]) -> Void){
         guard let healthStore = self.healthStore else { return }
         let timeFrame = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
